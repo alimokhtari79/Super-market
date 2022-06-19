@@ -11,12 +11,12 @@
 			rel="stylesheet"
 		/>
 		<link rel="stylesheet" href="/dist/output.css" />
-		<title>Document</title>
+		<title>Order Food</title>
 	</head>
 	<body
 		class="font-Lato bg-neutral-50 md:text-sm text-slate-900 overflow-x-hidden"
 	>
-		<div class="main-container py-8">
+		<main class="main-container py-8">
 			<!-- main nav -->
 			<nav
 				class="flex justify-between items-center align-middle h-6 px-8 md:px-16"
@@ -52,7 +52,7 @@
 				</div>
 
 				<div
-					class="shopping-cart--btn md:order-2 py-1 px-3 rounded-xl shadow-lg z-20 bg-neutral-50"
+					class="shopping-cart--btn cursor-pointer md:order-2 py-1 px-3 rounded-xl shadow-lg z-20 bg-neutral-50"
 				>
 					<button>
 						<svg
@@ -127,7 +127,7 @@
 
 				<!-- Right -->
 				<div
-					class="w-3/4 h-screen flex justify-center items-center scale-75 md:scale-95 transform translate-x-0 md:translate-x-10 translate-y-9 md:translate-y-0"
+					class="w-3/4 h-screen flex justify-center items-center scale-75 md:scale-95 transform translate-x-0 md:translate-x-10 translate-y-16 md:translate-y-0"
 				>
 					<img
 						class="w-60 h-60 sm:w-72 sm:h-72 rounded-full custom-shadow"
@@ -246,7 +246,7 @@
 			<!-- hero section -->
 			<!-- search and filter -->
 			<section
-				class="px-4 md:px-16 my-10 flex flex-col justify-center"
+				class="px-4 md:px-16 my-10 pt-8 flex flex-col justify-center"
 				id="menu"
 			>
 				<div class="flex justify-between flex-wrap">
@@ -307,7 +307,7 @@
 				</section>
 				<!-- menu -->
 			</section>
-		</div>
+		</main>
 		<!-- Cart Overly -->
 		<div
 			class="cart-overlay fixed top-0 right-0 w-full h-full md:w-1/4 md:min-w-min z-10 bg-gradient-to-tr from-rose-500 to-amber-300 md:rounded-3xl"
@@ -323,7 +323,7 @@
 					<!-- cart footer -->
 					<div class="flex items-center justify-center mt-6">
 						<h3 class="text-white text-lg">
-							Total Price :<span class="cart-total pl-2">100</span>
+							Total Price :<span class="cart-total pl-2"></span>
 						</h3>
 						<button
 							class="clear-cart font-bold clear-cart ml-5 px-6 py-3 bg-rose-800 rounded-lg text-white"

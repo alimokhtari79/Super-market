@@ -23,14 +23,21 @@
 	.custom-w {
 		width: 34rem;
 	}
+
 	.hw-inner {
 		height: 26rem;
 		width: 26rem;
 	}
+
 	.hw-outer {
 		height: 37rem;
 		width: 37rem;
 	}
+
+	.cart-width {
+		width: 23rem;
+	}
+
 	.anim-8s {
 		animation-duration: 8s !important;
 	}

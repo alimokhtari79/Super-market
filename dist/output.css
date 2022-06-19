@@ -491,6 +491,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 37rem;
 }
 
+.cart-width {
+  width: 23rem;
+}
+
 .anim-8s {
   -webkit-animation-duration: 8s !important;
           animation-duration: 8s !important;
@@ -737,10 +741,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 1rem;
 }
 
-.w-96 {
-  width: 24rem;
-}
-
 .min-w-max {
   min-width: -webkit-max-content;
   min-width: -moz-max-content;
@@ -752,8 +752,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.translate-y-9 {
-  --tw-translate-y: 2.25rem;
+.translate-y-16 {
+  --tw-translate-y: 4rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -837,6 +837,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .animate-rotate-img {
   -webkit-animation: rotate 13s linear infinite;
           animation: rotate 13s linear infinite;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .flex-col {
@@ -1035,6 +1039,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pr-2 {
   padding-right: 0.5rem;
+}
+
+.pt-8 {
+  padding-top: 2rem;
 }
 
 .pt-20 {

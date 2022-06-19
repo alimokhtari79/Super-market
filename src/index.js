@@ -69,7 +69,7 @@ const displayProducts = (products) => {
               <div class="item-price font-bold">$ ${item.price} </div>
             </div>
             <button
-              class="bag-btn p-1 rounded-lg text-white bg-orange-500 active:-translate-y-1 transform data-id=${item.id}"
+              class="bag-btn p-1 rounded-lg text-white bg-orange-500 active:-translate-y-1 transform " data-id=${item.id}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -122,17 +122,18 @@ const setCartValues = (cart) => {
 		totalItems = totalItems + item.amount;
 	});
 
-	cartTotal.innerText = totalPrice;
+	cartTotal.innerText = totalPrice.toFixed(2);
 	cartItems.innerText = totalItems;
 };
 
 const addCartItem = (item) => {
 	const div = document.createElement('div');
 	div.classList.add('cart-item');
+	div.classList.add('rounded-xl');
 
 	div.innerHTML = `
   <div
-    class="cart-item text-gray-800 w-96 h-28 bg-white rounded-xl mb-5 flex items-center justify-around"
+    class="cart-item text-gray-800 cart-width h-28 bg-white rounded-xl mb-5 flex items-center justify-around"
   >
     <figure>
       <img
@@ -143,17 +144,18 @@ const addCartItem = (item) => {
     </figure>
     <div class="h-18 text-base">
       <p class="pb-2 font-bold">${item.title}</p>
-      <p class="font-bold">${item.price}</p>
+      <p class="font-bold">$ ${item.price}</p>
     </div>
     <div class="flex justify-center items-center">
-      <button class="border border-gray-900 rounded-lg">
+      <button class="border border-gray-900 rounded-lg " >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
+          class="h-5 w-5 decrement-amount"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
           stroke-width="2"
+          data-id=${item.id}
         >
           <path
             stroke-linecap="round"
@@ -162,15 +164,18 @@ const addCartItem = (item) => {
           />
         </svg>
       </button>
-      <p class="px-2 font-bold">10</p>
+
+      <p class="px-2 font-bold">${item.amount}</p>
+
       <button class="border border-gray-900 rounded-lg">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
+          class="h-5 w-5 increment-amount"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
           stroke-width="2"
+          data-id=${item.id}
         >
           <path
             stroke-linecap="round"
@@ -179,9 +184,10 @@ const addCartItem = (item) => {
           />
         </svg>
       </button>
+
     </div>
     <div>
-      <button class="remove-item bg-rose-800 px-2 py-1 rounded-lg text-white">
+      <button class="remove-item bg-rose-800 px-2 py-1 rounded-lg text-white" data-id=${item.id}>
         delete
       </button>
     </div>
@@ -220,23 +226,19 @@ const cartProcess = () => {
 			removeProduct(id);
 		}
 
-		if (event.target.classList.contains('fa-chevron-up')) {
+		if (event.target.classList.contains('increment-amount')) {
 			let addAmount = event.target;
 			let id = addAmount.dataset.id;
-
 			let product = cart.find((item) => {
 				return item.id === id;
 			});
-
 			product.amount = product.amount + 1;
-
 			saveCart(cart);
 			setCartValues(cart);
-
-			addAmount.nextElementSibling.innerText = product.amount;
+			addAmount.parentElement.previousElementSibling.innerText = product.amount;
 		}
 
-		if (event.target.classList.contains('fa-chevron-down')) {
+		if (event.target.classList.contains('decrement-amount')) {
 			let lowerAmount = event.target;
 			let id = lowerAmount.dataset.id;
 
@@ -249,9 +251,11 @@ const cartProcess = () => {
 			if (product.amount > 0) {
 				saveCart(cart);
 				setCartValues(cart);
-				lowerAmount.previousElementSibling.innerText = product.amount;
+				lowerAmount.parentElement.nextElementSibling.innerText = product.amount;
 			} else {
-				cartContent.removeChild(lowerAmount.parentElement.parentElement);
+				cartContent.removeChild(
+					lowerAmount.parentElement.parentElement.parentElement.parentElement
+				);
 				removeProduct(id);
 			}
 		}
@@ -321,12 +325,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //----------Over lay----------
 
+const body = document.querySelector('body');
+
+const scrollBody = () => {
+	body.style.overflowY = 'auto';
+};
+
+const lockScrollBody = () => {
+	body.style.overflow = 'hidden';
+};
+
 const shoppingCart = document.querySelector('.cart-overlay');
 const shoppingCartOpen = () => {
 	const shoppingCartBtn = document.querySelector('.shopping-cart--btn');
 	const shoppingCartItems = document.querySelectorAll('.cart-item');
 
+	let counter = 0;
 	shoppingCartBtn.addEventListener('click', () => {
+		counter++;
+		counter % 2 !== 0 ? lockScrollBody() : scrollBody();
+
 		shoppingCart.classList.toggle('nav-active');
 
 		shoppingCartItems.forEach((item, index) => {
