@@ -120,3 +120,8 @@
 	grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
 	gap: 2rem;
 }
+
+.to-top.active {
+	pointer-events: auto;
+	opacity: 1;
+}

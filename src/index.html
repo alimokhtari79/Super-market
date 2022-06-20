@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -16,7 +16,7 @@
 	<body
 		class="font-Lato bg-neutral-50 md:text-sm text-slate-900 overflow-x-hidden"
 	>
-		<main class="main-container py-8">
+		<main class="main-container pt-8">
 			<!-- main nav -->
 			<nav
 				class="flex justify-between items-center align-middle h-6 px-8 md:px-16"
@@ -256,6 +256,7 @@
 					>
 						<input
 							type="text"
+							id="searchInput"
 							class="w-full h-11 px-3.5 bg-white text-gray-500 rounded-lg text-xl outline-none"
 							placeholder="Search"
 						/>
@@ -281,16 +282,19 @@
 					>
 						<button
 							class="select-btn text-lg h-10 w-28 rounded-full shadow-2xl transition-all duration-500"
+							data-filter=""
 						>
 							All
 						</button>
 						<button
 							class="select-btn text-lg h-10 w-28 rounded-full shadow-2xl transition-all duration-500"
+							data-filter="food"
 						>
 							Food
 						</button>
 						<button
 							class="select-btn text-lg h-10 w-28 rounded-full shadow-2xl transition-all duration-500"
+							data-filter="fruit"
 						>
 							Fruit
 						</button>
@@ -306,6 +310,38 @@
 					<!-- items -->
 				</section>
 				<!-- menu -->
+			</section>
+			<section
+				class="w-full flex justify-center h-20 bg-orange-400 text-white py-4"
+			>
+				<footer
+					id="contact"
+					class="flex w-96 justify-between flex-col lg:flex-row items-center"
+				>
+					<a
+						href="https://github.com/alimokhtari79/Order-Food"
+						class="underline text-blue-700 font-bold"
+						target="_blank"
+						>Github source code</a
+					>
+					<p>
+						Design inspired from
+						<a
+							href="https://dribbble.com/shots/17393231-Food-Order-Delivery-Website-Design"
+							class="underline text-blue-700 font-bold"
+							target="_blank"
+							>Link</a
+						>
+						and
+						<a
+							href="https://dribbble.com/shots/17351286-Fruit-Food-Delivery-Landing-Page"
+							class="underline text-blue-700 font-bold"
+							target="_blank"
+						>
+							Link
+						</a>
+					</p>
+				</footer>
 			</section>
 		</main>
 		<!-- Cart Overly -->
@@ -336,6 +372,22 @@
 			</div>
 		</div>
 		<!-- Cart Overly -->
+		<!-- Scroll to top btn -->
+		<a href="#" class="">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="to-top transition delay-300 h-6 w-6 fixed bottom-4 right-6 rounded-lg bg-gray-200 opacity-0 pointer-events-none"
+				viewBox="0 0 20 20"
+				fill="currentColor"
+			>
+				<path
+					fill-rule="evenodd"
+					d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
+					clip-rule="evenodd"
+				/>
+			</svg>
+		</a>
+		<!-- Scroll to top btn -->
 
 		<script src="./index.js"></script>
 	</body>

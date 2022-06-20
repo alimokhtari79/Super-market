@@ -7,8 +7,14 @@ const cartContent = document.querySelector('.cart-content');
 // const cartBtn = document.querySelector('.cart-btn');
 // const closeCartBtn = document.querySelector('.close-cart');
 const clearCartBtn = document.querySelector('.clear-cart');
+const searchInput = document.querySelector('#searchInput');
+const selectBtn = document.querySelectorAll('.select-btn');
 
 let productsData = [];
+const filters = {
+	searchItems: '',
+};
+
 let cart = [];
 
 const getProducts = async () => {
@@ -31,12 +37,16 @@ const getProducts = async () => {
 	}
 };
 
-const displayProducts = (products) => {
-	let result = '';
-	products.forEach((item) => {
-		result += `
-    <div class="h-44 rounded-3xl flex product-shadow">
-
+const displayProducts = (products, _filters) => {
+	const filteredProducts = products.filter((p) => {
+		return p.title.toLowerCase().includes(_filters.searchItems.toLowerCase());
+	});
+	console.log(filteredProducts);
+	productsDOM.innerHTML = '';
+	filteredProducts.forEach((item) => {
+		const productDiv = document.createElement('div');
+		productDiv.classList.add('h-44', 'rounded-3xl', 'flex', 'product-shadow');
+		productDiv.innerHTML = `
       <div class="w-1/2 h-full flex items-center justify-center">
         <div class="w-36">
           <img src=${item.image} alt=${item.title} />
@@ -69,7 +79,8 @@ const displayProducts = (products) => {
               <div class="item-price font-bold">$ ${item.price} </div>
             </div>
             <button
-              class="bag-btn p-1 rounded-lg text-white bg-orange-500 active:-translate-y-1 transform " data-id=${item.id}
+              class="bag-btn p-1 rounded-lg text-white bg-orange-500
+              active:-translate-y-1 transform" data-id=${item.id}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -87,12 +98,27 @@ const displayProducts = (products) => {
           </div>
         </div>
       </div>
-    </div>
     `;
+		productsDOM.appendChild(productDiv);
 	});
-
-	productsDOM.innerHTML = result;
+	return productsData;
 };
+
+searchInput.addEventListener('input', (e) => {
+	filters.searchItems = e.target.value;
+	displayProducts(productsData, filters);
+});
+
+// filter based on groups :
+selectBtn.forEach((btn) => {
+	btn.addEventListener('click', (e) => {
+		const filter = e.target.dataset.filter;
+		// e.target.classList.add("active");
+		// console.log(e.target.innerText);
+		filters.searchItems = filter;
+		displayProducts(productsData, filters);
+	});
+});
 
 const getCartButtons = () => {
 	const buttons = [...document.querySelectorAll('.bag-btn')];
@@ -314,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	getProducts()
 		.then((data) => {
-			displayProducts(data);
+			displayProducts(data, filters);
 			saveProducts(data);
 		})
 		.then(() => {
@@ -366,3 +392,17 @@ const shoppingCartSlide = () => {
 shoppingCartSlide();
 
 //----------Over lay----------
+
+//----------To Top Button----------
+
+const toTop = document.querySelector('.to-top');
+
+window.addEventListener('scroll', () => {
+	if (window.scrollY > 200) {
+		toTop.classList.add('active');
+	} else {
+		toTop.classList.remove('active');
+	}
+});
+
+//----------To Top Button----------
