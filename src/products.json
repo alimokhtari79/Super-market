@@ -1,200 +1,200 @@
 {
-	"items": [
-		{
-			"sys": { "id": "1" },
-			"fields": {
-				"title": "Pizza",
-				"price": 15.5,
-				"rate": 5,
-				"class": "food",
-				"image": {
-					"fields": { "file": { "url": "assets/image/food/pizza.png" } }
-				}
-			}
-		},
-		{
-			"sys": { "id": "2" },
-			"fields": {
-				"title": "Broccoli",
-				"price": 5.65,
-				"rate": 3.25,
-				"class": "food",
-				"image": {
-					"fields": {
-						"file": { "url": "assets/image/food/Broccoli.png" }
-					}
-				}
-			}
-		},
-		{
-			"sys": { "id": "3" },
-			"fields": {
-				"title": "Carrot",
-				"price": 3.25,
-				"rate": 4.95,
-				"class": "food",
-				"image": {
-					"fields": {
-						"file": { "url": "assets/image/food/Carrot.png" }
-					}
-				}
-			}
-		},
-		{
-			"sys": { "id": "4" },
-			"fields": {
-				"title": "Pancake",
-				"price": 10.99,
-				"rate": 5,
-				"class": "food",
-				"image": {
-					"fields": {
-						"file": { "url": "assets/image/food/pancake.png" }
-					}
-				}
-			}
-		},
-		{
-			"sys": { "id": "5" },
-			"fields": {
-				"title": "Custard",
-				"price": 5.5,
-				"rate": 4.5,
-				"class": "food",
-				"image": {
-					"fields": {
-						"file": { "url": "assets/image/food/Custard.png" }
-					}
-				}
-			}
-		},
-		{
-			"sys": { "id": "6" },
-			"fields": {
-				"title": "hot Dog",
-				"price": 4.25,
-				"rate": 4.5,
-				"class": "food",
-				"image": {
-					"fields": {
-						"file": { "url": "assets/image/food/hot_dog.png" }
-					}
-				}
-			}
-		},
-		{
-			"sys": { "id": "7" },
-			"fields": {
-				"title": "Cupcake",
-				"price": 2.25,
-				"rate": 4.5,
-				"class": "food",
-				"image": {
-					"fields": {
-						"file": { "url": "assets/image/food/Cupcake.png" }
-					}
-				}
-			}
-		},
-		{
-			"sys": { "id": "8" },
-			"fields": {
-				"title": "Chocolate bar",
-				"price": 8.25,
-				"rate": 3.5,
-				"class": "food",
-				"image": {
-					"fields": {
-						"file": { "url": "assets/image/food/Chocolate_bar.png" }
-					}
-				}
-			}
-		},
-		{
-			"sys": { "id": "9" },
-			"fields": {
-				"title": "Lime",
-				"price": 0.5,
-				"rate": 2.5,
-				"class": "fruit",
-				"image": {
-					"fields": {
-						"file": { "url": "assets/image/food/Lime.png" }
-					}
-				}
-			}
-		},
-		{
-			"sys": { "id": "10" },
-			"fields": {
-				"title": "Strawberry",
-				"price": 0.25,
-				"rate": 4.5,
-				"class": "fruit",
-				"image": {
-					"fields": {
-						"file": { "url": "assets/image/food/Strawberry.png" }
-					}
-				}
-			}
-		},
-		{
-			"sys": { "id": "11" },
-			"fields": {
-				"title": "Tomato",
-				"price": 1,
-				"rate": 2.5,
-				"class": "food",
-				"image": {
-					"fields": {
-						"file": { "url": "assets/image/food/Tomato.png" }
-					}
-				}
-			}
-		},
-		{
-			"sys": { "id": "12" },
-			"fields": {
-				"title": "Pineapple",
-				"price": 5.75,
-				"rate": 4.5,
-				"class": "fruit",
-				"image": {
-					"fields": {
-						"file": { "url": "assets/image/food/Pineapple.png" }
-					}
-				}
-			}
-		},
-		{
-			"sys": { "id": "13" },
-			"fields": {
-				"title": "Leafy green",
-				"price": 4.25,
-				"rate": 3.5,
-				"class": "food",
-				"image": {
-					"fields": {
-						"file": {
-							"url": "assets/image/food/Leafy_Green.png"
-						}
-					}
-				}
-			}
-		},
-		{
-			"sys": { "id": "14" },
-			"fields": {
-				"title": "Grape",
-				"price": 8.25,
-				"rate": 2,
-				"class": "fruit",
-				"image": {
-					"fields": {
-						"file": { "url": "assets/image/food/grape.png" }
-					}
-				}
-			}
-		}
-	]
+  "items": [
+    {
+      "sys": { "id": "1" },
+      "fields": {
+        "title": "Pizza",
+        "price": 15.5,
+        "rate": 5,
+        "class": "food",
+        "image": {
+          "fields": { "file": { "url": "../src/assets/image/food/pizza.png" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "2" },
+      "fields": {
+        "title": "Broccoli",
+        "price": 5.65,
+        "rate": 3.25,
+        "class": "food",
+        "image": {
+          "fields": {
+            "file": { "url": "../src/assets/image/food/Broccoli.png" }
+          }
+        }
+      }
+    },
+    {
+      "sys": { "id": "3" },
+      "fields": {
+        "title": "Carrot",
+        "price": 3.25,
+        "rate": 4.95,
+        "class": "food",
+        "image": {
+          "fields": {
+            "file": { "url": "../src/assets/image/food/Carrot.png" }
+          }
+        }
+      }
+    },
+    {
+      "sys": { "id": "4" },
+      "fields": {
+        "title": "Pancake",
+        "price": 10.99,
+        "rate": 5,
+        "class": "food",
+        "image": {
+          "fields": {
+            "file": { "url": "../src/assets/image/food/pancake.png" }
+          }
+        }
+      }
+    },
+    {
+      "sys": { "id": "5" },
+      "fields": {
+        "title": "Custard",
+        "price": 5.5,
+        "rate": 4.5,
+        "class": "food",
+        "image": {
+          "fields": {
+            "file": { "url": "../src/assets/image/food/Custard.png" }
+          }
+        }
+      }
+    },
+    {
+      "sys": { "id": "6" },
+      "fields": {
+        "title": "hot Dog",
+        "price": 4.25,
+        "rate": 4.5,
+        "class": "food",
+        "image": {
+          "fields": {
+            "file": { "url": "../src/assets/image/food/hot_dog.png" }
+          }
+        }
+      }
+    },
+    {
+      "sys": { "id": "7" },
+      "fields": {
+        "title": "Cupcake",
+        "price": 2.25,
+        "rate": 4.5,
+        "class": "food",
+        "image": {
+          "fields": {
+            "file": { "url": "../src/assets/image/food/Cupcake.png" }
+          }
+        }
+      }
+    },
+    {
+      "sys": { "id": "8" },
+      "fields": {
+        "title": "Chocolate bar",
+        "price": 8.25,
+        "rate": 3.5,
+        "class": "food",
+        "image": {
+          "fields": {
+            "file": { "url": "../src/assets/image/food/Chocolate_bar.png" }
+          }
+        }
+      }
+    },
+    {
+      "sys": { "id": "9" },
+      "fields": {
+        "title": "Lime",
+        "price": 0.5,
+        "rate": 2.5,
+        "class": "fruit",
+        "image": {
+          "fields": {
+            "file": { "url": "../src/assets/image/food/Lime.png" }
+          }
+        }
+      }
+    },
+    {
+      "sys": { "id": "10" },
+      "fields": {
+        "title": "Strawberry",
+        "price": 0.25,
+        "rate": 4.5,
+        "class": "fruit",
+        "image": {
+          "fields": {
+            "file": { "url": "../src/assets/image/food/Strawberry.png" }
+          }
+        }
+      }
+    },
+    {
+      "sys": { "id": "11" },
+      "fields": {
+        "title": "Tomato",
+        "price": 1,
+        "rate": 2.5,
+        "class": "food",
+        "image": {
+          "fields": {
+            "file": { "url": "../src/assets/image/food/Tomato.png" }
+          }
+        }
+      }
+    },
+    {
+      "sys": { "id": "12" },
+      "fields": {
+        "title": "Pineapple",
+        "price": 5.75,
+        "rate": 4.5,
+        "class": "fruit",
+        "image": {
+          "fields": {
+            "file": { "url": "../src/assets/image/food/Pineapple.png" }
+          }
+        }
+      }
+    },
+    {
+      "sys": { "id": "13" },
+      "fields": {
+        "title": "Leafy green",
+        "price": 4.25,
+        "rate": 3.5,
+        "class": "food",
+        "image": {
+          "fields": {
+            "file": {
+              "url": "../src/assets/image/food/Leafy_Green.png"
+            }
+          }
+        }
+      }
+    },
+    {
+      "sys": { "id": "14" },
+      "fields": {
+        "title": "Grape",
+        "price": 8.25,
+        "rate": 2,
+        "class": "fruit",
+        "image": {
+          "fields": {
+            "file": { "url": "../src/assets/image/food/grape.png" }
+          }
+        }
+      }
+    }
+  ]
 }

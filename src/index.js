@@ -41,6 +41,7 @@ const displayProducts = (products, _filters) => {
   console.log(filteredProducts);
   productsDOM.innerHTML = '';
   filteredProducts.forEach((item) => {
+    console.log(item);
     const productDiv = document.createElement('div');
     productDiv.classList.add('h-44', 'rounded-3xl', 'flex', 'product-shadow');
     productDiv.innerHTML = `
