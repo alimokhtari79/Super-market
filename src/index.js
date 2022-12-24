@@ -11,42 +11,43 @@ const searchInput = document.querySelector('#searchInput');
 const selectBtn = document.querySelectorAll('.select-btn');
 
 let productsData = [];
-const filters = {
-	searchItems: '',
-};
 
 let cart = [];
 
 const getProducts = async () => {
-	try {
-		const result = await fetch('/src/products.json');
-		const data = await result.json();
+  try {
+    const result = await fetch('/src/products.json');
+    const data = await result.json();
 
-		let ProductsData = data.items;
+    let ProductsData = data.items;
 
-		ProductsData = ProductsData.map((item) => {
-			const { title, price, rate } = item.fields;
-			const { id } = item.sys;
-			const image = item.fields.image.fields.file.url;
-			return { title, price, rate, id, image };
-		});
+    ProductsData = ProductsData.map((item) => {
+      const { title, price, rate } = item.fields;
+      const { id } = item.sys;
+      const image = item.fields.image.fields.file.url;
+      return { title, price, rate, id, image };
+    });
 
-		return ProductsData;
-	} catch (err) {
-		console.log(err);
-	}
+    return ProductsData;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const filters = {
+  searchItems: '',
 };
 
 const displayProducts = (products, _filters) => {
-	const filteredProducts = products.filter((p) => {
-		return p.title.toLowerCase().includes(_filters.searchItems.toLowerCase());
-	});
-	console.log(filteredProducts);
-	productsDOM.innerHTML = '';
-	filteredProducts.forEach((item) => {
-		const productDiv = document.createElement('div');
-		productDiv.classList.add('h-44', 'rounded-3xl', 'flex', 'product-shadow');
-		productDiv.innerHTML = `
+  const filteredProducts = products.filter((p) => {
+    return p.title.toLowerCase().includes(_filters.searchItems.toLowerCase());
+  });
+  console.log(filteredProducts);
+  productsDOM.innerHTML = '';
+  filteredProducts.forEach((item) => {
+    const productDiv = document.createElement('div');
+    productDiv.classList.add('h-44', 'rounded-3xl', 'flex', 'product-shadow');
+    productDiv.innerHTML = `
       <div class="w-1/2 h-full flex items-center justify-center">
         <div class="w-36">
           <img src=${item.image} alt=${item.title} />
@@ -99,65 +100,65 @@ const displayProducts = (products, _filters) => {
         </div>
       </div>
     `;
-		productsDOM.appendChild(productDiv);
-	});
-	return productsData;
+    productsDOM.appendChild(productDiv);
+  });
+  return productsData;
 };
 
 searchInput.addEventListener('input', (e) => {
-	filters.searchItems = e.target.value;
-	displayProducts(productsData, filters);
+  console.log(e.target.value);
+  filters.searchItems = e.target.value;
+  displayProducts(productsData, filters);
 });
 
 // filter based on groups :
 selectBtn.forEach((btn) => {
-	btn.addEventListener('click', (e) => {
-		const filter = e.target.dataset.filter;
-		// e.target.classList.add("active");
-		// console.log(e.target.innerText);
-		filters.searchItems = filter;
-		displayProducts(productsData, filters);
-	});
+  btn.addEventListener('click', (e) => {
+    const filter = e.target.dataset.filter;
+    filters.searchItems = filter;
+    console.log(filters);
+    displayProducts(productsData, filters);
+  });
 });
 
 const getCartButtons = () => {
-	const buttons = [...document.querySelectorAll('.bag-btn')];
+  const buttons = [...document.querySelectorAll('.bag-btn')];
 
-	buttons.forEach((item) => {
-		let id = item.dataset.id;
+  buttons.forEach((item) => {
+    let id = item.dataset.id;
 
-		item.addEventListener('click', (event) => {
-			let cartItem = { ...getProduct(id), amount: 1 };
-			cart = [...cart, cartItem];
+    item.addEventListener('click', (event) => {
+      let cartItem = { ...getProduct(id), amount: 1 };
+      cart = [...cart, cartItem];
 
-			saveCart(cart);
+      saveCart(cart);
 
-			setCartValues(cart);
+      setCartValues(cart);
 
-			addCartItem(cartItem);
-		});
-	});
+      addCartItem(cartItem);
+    });
+  });
 };
 
 const setCartValues = (cart) => {
-	let totalPrice = 0;
-	let totalItems = 0;
+  let totalPrice = 0;
+  let totalItems = 0;
 
-	cart.map((item) => {
-		totalPrice = totalPrice + item.price * item.amount;
-		totalItems = totalItems + item.amount;
-	});
+  cart.map((item) => {
+    totalPrice = totalPrice + item.price * item.amount;
+    totalItems = totalItems + item.amount;
+  });
 
-	cartTotal.innerText = totalPrice.toFixed(2);
-	cartItems.innerText = totalItems;
+  cartTotal.innerText = totalPrice.toFixed(2);
+  cartItems.innerText = totalItems;
 };
 
 const addCartItem = (item) => {
-	const div = document.createElement('div');
-	div.classList.add('cart-item');
-	div.classList.add('rounded-xl');
+  const div = document.createElement('div');
+  div.classList.add('cart-item');
+  div.classList.add('rounded-xl');
 
-	div.innerHTML = `
+  div.innerHTML = `
   <div
     class="cart-item text-gray-800 cart-width h-28 bg-white rounded-xl mb-5 flex items-center justify-around"
   >
@@ -219,134 +220,134 @@ const addCartItem = (item) => {
     </div>
   </div>
   `;
-	cartContent.appendChild(div);
+  cartContent.appendChild(div);
 };
 
 const initApp = () => {
-	cart = getCart();
+  cart = getCart();
 
-	setCartValues(cart);
-	populate(cart);
+  setCartValues(cart);
+  populate(cart);
 };
 
 const populate = (cart) => {
-	cart.forEach((item) => {
-		return addCartItem(item);
-	});
+  cart.forEach((item) => {
+    return addCartItem(item);
+  });
 };
 
 const cartProcess = () => {
-	clearCartBtn.addEventListener('click', () => {
-		clearCart();
-	});
+  clearCartBtn.addEventListener('click', () => {
+    clearCart();
+  });
 
-	cartContent.addEventListener('click', (event) => {
-		if (event.target.classList.contains('remove-item')) {
-			let removeItem = event.target;
-			let id = removeItem.dataset.id;
+  cartContent.addEventListener('click', (event) => {
+    if (event.target.classList.contains('remove-item')) {
+      let removeItem = event.target;
+      let id = removeItem.dataset.id;
 
-			cartContent.removeChild(
-				removeItem.parentElement.parentElement.parentElement
-			);
+      cartContent.removeChild(
+        removeItem.parentElement.parentElement.parentElement
+      );
 
-			removeProduct(id);
-		}
+      removeProduct(id);
+    }
 
-		if (event.target.classList.contains('increment-amount')) {
-			let addAmount = event.target;
-			let id = addAmount.dataset.id;
-			let product = cart.find((item) => {
-				return item.id === id;
-			});
-			product.amount = product.amount + 1;
-			saveCart(cart);
-			setCartValues(cart);
-			addAmount.parentElement.previousElementSibling.innerText = product.amount;
-		}
+    if (event.target.classList.contains('increment-amount')) {
+      let addAmount = event.target;
+      let id = addAmount.dataset.id;
+      let product = cart.find((item) => {
+        return item.id === id;
+      });
+      product.amount = product.amount + 1;
+      saveCart(cart);
+      setCartValues(cart);
+      addAmount.parentElement.previousElementSibling.innerText = product.amount;
+    }
 
-		if (event.target.classList.contains('decrement-amount')) {
-			let lowerAmount = event.target;
-			let id = lowerAmount.dataset.id;
+    if (event.target.classList.contains('decrement-amount')) {
+      let lowerAmount = event.target;
+      let id = lowerAmount.dataset.id;
 
-			let product = cart.find((item) => {
-				return item.id === id;
-			});
+      let product = cart.find((item) => {
+        return item.id === id;
+      });
 
-			product.amount = product.amount - 1;
+      product.amount = product.amount - 1;
 
-			if (product.amount > 0) {
-				saveCart(cart);
-				setCartValues(cart);
-				lowerAmount.parentElement.nextElementSibling.innerText = product.amount;
-			} else {
-				cartContent.removeChild(
-					lowerAmount.parentElement.parentElement.parentElement.parentElement
-				);
-				removeProduct(id);
-			}
-		}
-	});
+      if (product.amount > 0) {
+        saveCart(cart);
+        setCartValues(cart);
+        lowerAmount.parentElement.nextElementSibling.innerText = product.amount;
+      } else {
+        cartContent.removeChild(
+          lowerAmount.parentElement.parentElement.parentElement.parentElement
+        );
+        removeProduct(id);
+      }
+    }
+  });
 };
 
 const clearCart = () => {
-	let cartItems = cart.map((item) => {
-		return item.id;
-	});
+  let cartItems = cart.map((item) => {
+    return item.id;
+  });
 
-	cartItems.forEach((item) => {
-		return removeProduct(item);
-	});
+  cartItems.forEach((item) => {
+    return removeProduct(item);
+  });
 
-	while (cartContent.children.length > 0) {
-		cartContent.removeChild(cartContent.children[0]);
-	}
+  while (cartContent.children.length > 0) {
+    cartContent.removeChild(cartContent.children[0]);
+  }
 };
 
 const removeProduct = (id) => {
-	cart = cart.filter((item) => {
-		return item.id !== id;
-	});
+  cart = cart.filter((item) => {
+    return item.id !== id;
+  });
 
-	setCartValues(cart);
-	saveCart(cart);
+  setCartValues(cart);
+  saveCart(cart);
 };
 
 // -----------------Storage-----------------
 
 const saveProducts = (products) => {
-	localStorage.setItem('products', JSON.stringify(products));
+  localStorage.setItem('products', JSON.stringify(products));
 };
 
 const getProduct = (id) => {
-	let products = JSON.parse(localStorage.getItem('products'));
+  let products = JSON.parse(localStorage.getItem('products'));
 
-	return products.find((item) => item.id === id);
+  return products.find((item) => item.id === id);
 };
 
 const saveCart = (cart) => {
-	localStorage.setItem('cart', JSON.stringify(cart));
+  localStorage.setItem('cart', JSON.stringify(cart));
 };
 
 const getCart = () => {
-	return localStorage.getItem('cart')
-		? JSON.parse(localStorage.getItem('cart'))
-		: [];
+  return localStorage.getItem('cart')
+    ? JSON.parse(localStorage.getItem('cart'))
+    : [];
 };
 
 // -----------------Storage-----------------
 
 document.addEventListener('DOMContentLoaded', () => {
-	initApp();
+  initApp();
 
-	getProducts()
-		.then((data) => {
-			displayProducts(data, filters);
-			saveProducts(data);
-		})
-		.then(() => {
-			getCartButtons();
-			cartProcess();
-		});
+  getProducts()
+    .then((data) => {
+      displayProducts(data, filters);
+      saveProducts(data);
+    })
+    .then(() => {
+      getCartButtons();
+      cartProcess();
+    });
 });
 
 //----------Over lay----------
@@ -354,39 +355,39 @@ document.addEventListener('DOMContentLoaded', () => {
 const body = document.querySelector('body');
 
 const scrollBody = () => {
-	body.style.overflowY = 'auto';
+  body.style.overflowY = 'auto';
 };
 
 const lockScrollBody = () => {
-	body.style.overflow = 'hidden';
+  body.style.overflow = 'hidden';
 };
 
 const shoppingCart = document.querySelector('.cart-overlay');
 const shoppingCartOpen = () => {
-	const shoppingCartBtn = document.querySelector('.shopping-cart--btn');
-	const shoppingCartItems = document.querySelectorAll('.cart-item');
+  const shoppingCartBtn = document.querySelector('.shopping-cart--btn');
+  const shoppingCartItems = document.querySelectorAll('.cart-item');
 
-	let counter = 0;
-	shoppingCartBtn.addEventListener('click', () => {
-		counter++;
-		counter % 2 !== 0 ? lockScrollBody() : scrollBody();
+  let counter = 0;
+  shoppingCartBtn.addEventListener('click', () => {
+    counter++;
+    counter % 2 !== 0 ? lockScrollBody() : scrollBody();
 
-		shoppingCart.classList.toggle('nav-active');
+    shoppingCart.classList.toggle('nav-active');
 
-		shoppingCartItems.forEach((item, index) => {
-			if (item.style.animation) {
-				item.style.animation = '';
-			} else {
-				item.style.animation = `shoppingCartFade 0.5s ease forwards ${
-					index / 7 + 0.8
-				}s`;
-			}
-		});
-	});
+    shoppingCartItems.forEach((item, index) => {
+      if (item.style.animation) {
+        item.style.animation = '';
+      } else {
+        item.style.animation = `shoppingCartFade 0.5s ease forwards ${
+          index / 7 + 0.8
+        }s`;
+      }
+    });
+  });
 };
 
 const shoppingCartSlide = () => {
-	shoppingCartOpen();
+  shoppingCartOpen();
 };
 
 shoppingCartSlide();
@@ -398,11 +399,11 @@ shoppingCartSlide();
 const toTop = document.querySelector('.to-top');
 
 window.addEventListener('scroll', () => {
-	if (window.scrollY > 200) {
-		toTop.classList.add('active');
-	} else {
-		toTop.classList.remove('active');
-	}
+  if (window.scrollY > 200) {
+    toTop.classList.add('active');
+  } else {
+    toTop.classList.remove('active');
+  }
 });
 
 //----------To Top Button----------

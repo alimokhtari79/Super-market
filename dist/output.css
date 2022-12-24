@@ -1343,10 +1343,6 @@ video {
   transition-duration: 150ms;
 }
 
-.delay-200 {
-  transition-delay: 200ms;
-}
-
 .delay-300 {
   transition-delay: 300ms;
 }
